@@ -1,0 +1,1 @@
+<img src="./images/test_texture.png" alt="テクスチャ貼り付けテスト">
