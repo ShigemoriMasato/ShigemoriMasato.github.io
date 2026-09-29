@@ -1,5 +1,9 @@
-title: Shigemori's Portforio
+title: "Shigemori's Portfolio"
+description: "Game Programmer Portfolio"
 
+theme: jekyll-theme-minimal
+
+# Comment Out
 <img src="./images/test_texture.png" alt="テクスチャ貼り付けテスト">
 
-updated: 01
+updated->01
