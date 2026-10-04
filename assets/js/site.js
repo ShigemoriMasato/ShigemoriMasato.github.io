@@ -17,4 +17,19 @@
       });
     });
   });
+
+  const engineLink = document.querySelector('#engine-link');
+  if (engineLink) {
+    const openEngineLink = () => {
+      const url = engineLink.dataset.url;
+      if (url) window.open(url, '_blank', 'noopener,noreferrer');
+    };
+    engineLink.addEventListener('dblclick', openEngineLink);
+    engineLink.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openEngineLink();
+      }
+    });
+  }
 })();
