@@ -1,6 +1,17 @@
-title: "Shigemori's Portfolio"
-description: "Game Programmer Portfolio"
+title: "薫森 将人 | ゲームプログラマー"
+description: "薫森将人（シゲモリマサト）のポートフォリオ。DirectX 12 の自作ゲームエンジン開発やゲーム制作実績を紹介します。"
+url: "https://ShigemoriMasato.github.io"
+baseurl: ""
 
 theme: jekyll-theme-minimal
+lang: ja
+encoding: "utf-8"
 
-# Comment Out
+markdown: kramdown
+plugins:
+  - jekyll-seo-tag
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
