@@ -1,7 +1,7 @@
 (() => {
   const cards = [...document.querySelectorAll('.work-card')];
   const count = document.querySelector('#work-count');
-  const filters = [...document.querySelectorAll('.filter')];
+  const filters = [...document.querySelectorAll('.filter[data-filter]')];
   if (count) count.textContent = String(cards.length).padStart(2, '0');
 
   const workGrid = document.querySelector('#work-grid');
