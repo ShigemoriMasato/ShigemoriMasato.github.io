@@ -20,7 +20,9 @@ GitHub リポジトリの **Settings → Pages** で、公開元を `Deploy from
 
 ## 作品の追加
 
-`index.html` の `work-grid` 内にあるコメント付き `<article class="work-card">` テンプレートを複製し、HTML コメントの外に置いて編集してください。`data-category` には `game`、`engine`、`tool` のいずれかを指定すると一覧の絞り込みに対応します。作品名、制作期間、概要、担当、使用技術、公開リンクなどを記入してください。
+`index.html` の `work-grid` 内にあるコメント付き `<article class="work-card">` テンプレートを複製し、HTML コメントの外に置いて編集してください。`data-category` には `game`、`engine`、`tool` のいずれかを指定すると一覧の絞り込みに対応します。`data-title`、`data-period`、`data-description`、`data-image` に作品情報を設定すると、カードをクリックしたときに全画面詳細が開きます。画像は `images/` に追加してください。
+
+詳細画面のリンクアイコンは任意で指定できます。GitHub リンクは `data-github="https://github.com/..."`、ダウンロードリンクは `data-download="{{ '/downloads/作品.zip' | relative_url }}"` に URL を設定してください。不要なリンクは属性を空にするか削除すると、アイコンも表示されません。作品名、説明、技術タグなどもテンプレートから編集できます。カードをクリックして開く詳細画面は Esc キー、閉じるボタン、背景クリックで閉じられます。
 
 画像は `images/` に置き、カードの `work-image` に `style="background-image:url('{{ '/images/ファイル名.png' | relative_url }}')"` を設定します。作品カードを追加すると件数表示も自動で更新されます。カテゴリ絞り込みや件数表示は `assets/js/site.js` が担当しています。
 

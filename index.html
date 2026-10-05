@@ -63,23 +63,31 @@
         作品を追加するときは、この article を複製してコメントの外に置いてください。
         data-category は game / engine / tool のいずれかを指定します。
         画像は images/ に追加し、work-image の background-image を設定してください。
-        <article class="work-card" data-category="game">
-          <a class="work-image" href="作品のURL" style="background-image:url('{{ '/images/作品画像.png' | relative_url }}')" aria-label="作品名の詳細を見る"><span class="work-number">01</span><span class="work-arrow">↗</span></a>
+        <article class="work-card" data-category="game" data-title="作品名" data-period="2026" data-description="ゲームの概要や担当、工夫した点を詳しく紹介します。" data-image="{{ '/images/作品画像.png' | relative_url }}" data-github="" data-download="">
+          <div class="work-image" style="background-image:url('{{ '/images/作品画像.png' | relative_url }}')"><span class="work-number">01</span><span class="work-arrow">↗</span></div>
           <div class="work-meta"><span>GAME</span><span>2026</span></div>
-          <h3><a href="作品のURL">作品名</a></h3>
+          <h3>作品名</h3>
           <p>ゲームの概要と、自分が担当したことや技術的な工夫を紹介します。</p>
           <div class="work-tags"><span>使用技術</span><span>担当領域</span></div>
         </article>
         -->
-        <article class="work-card" data-category="game">
-          <a class="work-image" href="https://github.com/ShigemoriMasato/SHEngine.git" style="background-image:url('{{ '/images/test.png' | relative_url }}')" aria-label="作品名の詳細を見る"><span class="work-number">01</span><span class="work-arrow">↗</span></a>
+        <article class="work-card" data-category="game" data-title="TestGame" data-period="2026" data-description="Test Message" data-image="{{ '/images/test.png' | relative_url }}" data-github="https://github.com/ShigemoriMasato/SHEngine" data-download="">
+          <div class="work-image" style="background-image:url('{{ '/images/test.png' | relative_url }}')"><span class="work-number">01</span><span class="work-arrow">↗</span></div>
           <div class="work-meta"><span>GAME</span><span>2026</span></div>
-          <h3><a href="https://github.com/ShigemoriMasato/SHEngine.git">TestGame</a></h3>
+          <h3>TestGame</h3>
           <p>Test Message</p>
           <div class="work-tags"><span>Use Skill</span><span>My Jobs</span></div>
         </article>
       </div>
     </section>
+
+    <dialog class="project-dialog" id="project-dialog" aria-labelledby="dialog-title">
+      <button class="dialog-close" type="button" aria-label="詳細を閉じる">×</button>
+      <div class="dialog-layout">
+        <div class="dialog-image-wrap"><img class="dialog-image" src="" alt=""></div>
+        <div class="dialog-content"><p class="eyebrow dialog-meta"></p><h2 id="dialog-title"></h2><p class="dialog-description"></p><div class="dialog-tags"></div><div class="dialog-links" aria-label="作品リンク"></div></div>
+      </div>
+    </dialog>
 
     <section class="contact-band"><div class="wrap contact-inner"><div><p class="eyebrow">LET’S MAKE SOMETHING PLAYABLE</p><h2>一緒に、面白いものを。</h2></div><a class="button button-light" href="mailto:ktm65535@gmail.com">お問い合わせ <span>↗</span></a></div></section>
   </main>
