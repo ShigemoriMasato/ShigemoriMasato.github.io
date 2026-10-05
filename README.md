@@ -6,6 +6,39 @@
 
 GitHub リポジトリの **Settings → Pages** で、公開元を `Deploy from a branch`、既定ブランチの `/ (root)` に設定してください。ユーザーサイトの URL は `https://ShigemoriMasato.github.io/` です。
 
+## ローカルで確認する（Windows）
+
+GitHub Pages と同じ Jekyll 環境で確認できます。最初に Ruby と MSYS2 DevKit を入れます。
+
+1. [RubyInstaller のダウンロードページ](https://rubyinstaller.org/downloads/)を開き、**Ruby+Devkit x64** の安定版インストーラーをダウンロードします。ページで推奨されている最新の安定版を選んでください。DevKit は gem の一部をビルドするために使います。
+2. インストーラーを実行し、既定の選択肢で進めます。Ruby を PATH に追加する項目を有効にし、最後の画面で **Run 'ridk install'** を選んで完了します。
+3. 開いた MSYS2 のセットアップ画面で、推奨項目（通常は `1,2,3`）をインストールします。処理が終わったら画面を閉じます。
+4. PowerShell を新しく開き、Ruby と gem が使えることを確認します。
+
+```powershell
+ruby -v
+gem -v
+bundle -v
+```
+
+RubyInstaller に Bundler が含まれていない場合は、次で追加します。
+
+```powershell
+gem install bundler
+```
+
+続いて、このリポジトリのルートで依存 gem をインストールし、サイトを起動します。
+
+```powershell
+bundle install
+bundle update liquid
+bundle exec jekyll serve --livereload
+```
+
+表示された `http://127.0.0.1:4000/` をブラウザーで開きます。ファイルを保存するとページが再生成され、ブラウザーも更新されます。終了するときはターミナルで `Ctrl+C` を押してください。
+
+初回の `bundle install` では GitHub Pages が使う gem を取得します。依存 gem は `vendor/bundle` にインストールされ、Git 管理対象には含まれません。`Gemfile.lock` は環境に合わせて生成されます。`bundle` が見つからない場合は RubyInstaller が PATH に追加されているか確認し、PowerShell を開き直してから試してください。
+
 ## プロフィールの編集
 
 プロフィールや実績は `index.html` に記載しています。連絡先など公開範囲を限定したい情報は掲載しないでください。

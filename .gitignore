@@ -1,1 +1,18 @@
-/.vs
+# 個人情報を含むローカル用ファイル
+**/自己紹介.txt
+
+# Visual Studio の作業フォルダー
+**/.vs/
+
+# Jekyll / Sass の生成物・キャッシュ
+/_site/
+/.jekyll-cache/
+/.sass-cache/
+/.jekyll-metadata
+/vendor/bundle/
+/.bundle/
+
+# OS が作成するファイル
+.DS_Store
+Thumbs.db
+Desktop.ini
