@@ -14,12 +14,13 @@
   };
   const sortCards = () => {
     if (!workGrid || !sortButton) return;
-    const direction = sortButton.dataset.order === 'asc' ? 1 : -1;
+    const order = sortButton.dataset.order || 'desc';
     const sorted = [...cards].sort((a, b) => {
       const aDate = dateValue(a);
       const bDate = dateValue(b);
       if (aDate === null && bDate !== null) return 1;
       if (bDate === null && aDate !== null) return -1;
+      const direction = order === 'asc' ? 1 : -1;
       return ((aDate || 0) - (bDate || 0)) * direction;
     });
     sorted.forEach((card) => workGrid.append(card));
@@ -27,10 +28,14 @@
   sortCards();
   if (sortButton) {
     sortButton.addEventListener('click', () => {
-      const ascending = sortButton.dataset.order !== 'asc';
-      sortButton.dataset.order = ascending ? 'asc' : 'desc';
-      sortButton.textContent = ascending ? '制作日 ↑ 古い順' : '制作日 ↓ 新しい順';
-      sortButton.setAttribute('aria-label', ascending ? '制作日の新しい順に切り替える' : '制作日の古い順に切り替える');
+      const nextOrder = sortButton.dataset.order === 'desc' ? 'asc' : 'desc';
+      const labels = {
+        desc: ['制作日 ↓ 新しい順', '制作日の古い順に切り替える'],
+        asc: ['制作日 ↑ 古い順', '制作日の新しい順に切り替える']
+      };
+      sortButton.dataset.order = nextOrder;
+      sortButton.textContent = labels[nextOrder][0];
+      sortButton.setAttribute('aria-label', labels[nextOrder][1]);
       sortCards();
     });
   }

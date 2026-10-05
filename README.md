@@ -53,7 +53,7 @@ bundle exec jekyll serve --livereload
 
 ## 作品の追加
 
-`index.html` の `work-grid` 内にあるコメント付き `<article class="work-card">` テンプレートを複製し、HTML コメントの外に置いて編集してください。`data-category` には `game` または `engine` を指定します。制作日は `data-period` に `yyyy/mm` 形式（例: `2025/04`）で設定してください。作品一覧の「制作日」ボタンで新しい順／古い順を切り替えられます。カード一覧では説明文を表示せず、`data-title`、`data-period`、`data-description`、`data-image` の情報はカードをクリックしたときの全画面詳細に表示します。画像は `images/games/` に追加してください。
+`index.html` の `work-grid` 内にあるコメント付き `<article class="work-card">` テンプレートを複製し、HTML コメントの外に置いて編集してください。`data-category` には `game` または `engine` を指定します。制作日は `data-period` に `yyyy/mm` 形式（例: `2025/04`）で設定してください。作品一覧の並べ替えボタンで制作日の新しい順／古い順を切り替えられます。カード一覧では説明文を表示せず、`data-title`、`data-period`、`data-description`、`data-image` の情報はカードをクリックしたときの全画面詳細に表示します。画像は `images/games/` に追加してください。
 
 お気に入りとして表示する作品には `data-favorite="true"` を追加してください。FAVORITE フィルターは GAME／ENGINE のカテゴリをまたいで、その属性が付いた作品を表示します。現在は受賞作「折り画面」をお気に入りに設定しています。
 
