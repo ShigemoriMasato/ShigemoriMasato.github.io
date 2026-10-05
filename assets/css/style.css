@@ -9,3 +9,5 @@
 .project-dialog{position:fixed;inset:0}
 
 dialog.project-dialog[open]{display:block!important;position:fixed!important;inset:0!important;top:0!important;left:0!important;right:0!important;bottom:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;min-width:100vw!important;min-height:100vh!important;max-width:none!important;max-height:none!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;transform:none!important;overflow:auto!important}.feature-card:hover,.feature-card:focus-within{transform:scale(1.035)!important;z-index:2}.work-card:hover,.work-card:focus-visible{transform:scale(1.04)!important;z-index:2}
+
+.work-card>p{display:none}

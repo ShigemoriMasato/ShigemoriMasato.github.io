@@ -13,8 +13,11 @@
         item.setAttribute('aria-pressed', String(active));
       });
       cards.forEach((card) => {
-        card.hidden = category !== 'all' && card.dataset.category !== category;
+        card.hidden = category === 'favorite'
+          ? card.dataset.favorite !== 'true'
+          : category !== 'all' && card.dataset.category !== category;
       });
+      if (count) count.textContent = String(cards.filter((card) => !card.hidden).length).padStart(2, '0');
     });
   });
 

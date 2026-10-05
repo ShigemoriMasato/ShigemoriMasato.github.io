@@ -53,7 +53,9 @@ bundle exec jekyll serve --livereload
 
 ## 作品の追加
 
-`index.html` の `work-grid` 内にあるコメント付き `<article class="work-card">` テンプレートを複製し、HTML コメントの外に置いて編集してください。`data-category` には `game`、`engine`、`tool` のいずれかを指定すると一覧の絞り込みに対応します。`data-title`、`data-period`、`data-description`、`data-image` に作品情報を設定すると、カードをクリックしたときに全画面詳細が開きます。画像は `images/` に追加してください。
+`index.html` の `work-grid` 内にあるコメント付き `<article class="work-card">` テンプレートを複製し、HTML コメントの外に置いて編集してください。`data-category` には `game` または `engine` を指定します。カード一覧では説明文を表示せず、`data-title`、`data-period`、`data-description`、`data-image` の情報はカードをクリックしたときの全画面詳細に表示します。画像は `images/` に追加してください。
+
+お気に入りとして表示する作品には `data-favorite="true"` を追加してください。FAVORITE フィルターは GAME／ENGINE のカテゴリをまたいで、その属性が付いた作品を表示します。現在は受賞作「折り画面」をお気に入りに設定しています。
 
 詳細画面のリンクアイコンは任意で指定できます。GitHub リンクは `data-github="https://github.com/..."`、ダウンロードリンクは `data-download="{{ '/downloads/作品.zip' | relative_url }}"` に URL を設定してください。不要なリンクは属性を空にするか削除すると、アイコンも表示されません。作品名、説明、技術タグなどもテンプレートから編集できます。カードをクリックして開く詳細画面は Esc キー、閉じるボタン、背景クリックで閉じられます。
 

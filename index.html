@@ -31,7 +31,7 @@
         <p class="hero-description">ゲームの面白さを支える仕組みを考え、形にするゲームプログラマーです。DirectX 12 を使った自作エンジン開発や、幅広いジャンルのゲーム制作に取り組んでいます。</p>
         <div class="hero-actions"><a class="button button-primary" href="#works">制作作品を見る <span>↓</span></a><a class="text-link" href="mailto:ktm65535@gmail.com">メールで連絡する <span>↗</span></a></div>
       </div>
-      <div class="hero-art"><img src="{{ '/images/test.png' | relative_url }}" alt="TestGame の画像"></div>
+      <div class="hero-art"><img src="{{ '/images/Top.png' | relative_url }}" alt="ポートフォリオのトップ画像"></div>
     </section>
 
     <section class="section wrap" id="about">
@@ -57,11 +57,12 @@
 
     <section class="section wrap works-section" id="works">
       <div class="section-heading works-heading"><div><p class="eyebrow">03 — SELECTED PROJECTS</p><h2>制作作品<span class="heading-dot">.</span></h2></div><p class="section-note">ゲームや技術デモを、制作背景とともに紹介します。</p></div>
-      <div class="work-toolbar"><p><span id="work-count">0</span> PROJECTS</p><div class="filters" role="group" aria-label="作品をカテゴリで絞り込む"><button class="filter active" data-filter="all" aria-pressed="true">すべて</button><button class="filter" data-filter="game" aria-pressed="false">GAME</button><button class="filter" data-filter="engine" aria-pressed="false">ENGINE</button><button class="filter" data-filter="tool" aria-pressed="false">TOOL</button></div></div>
+      <div class="work-toolbar"><p><span id="work-count">0</span> PROJECTS</p><div class="filters" role="group" aria-label="作品をカテゴリまたはお気に入りで絞り込む"><button class="filter active" data-filter="all" aria-pressed="true">すべて</button><button class="filter" data-filter="game" aria-pressed="false">GAME</button><button class="filter" data-filter="engine" aria-pressed="false">ENGINE</button><button class="filter" data-filter="favorite" aria-pressed="false">FAVORITE</button></div></div>
       <div class="work-grid" id="work-grid">
         <!--
         作品を追加するときは、この article を複製してコメントの外に置いてください。
-        data-category は game / engine / tool のいずれかを指定します。
+        data-category は game / engine のいずれかを指定します。
+        お気に入りにする場合は data-favorite="true" を追加します。
         画像は images/ に追加し、work-image の background-image を設定してください。
         <article class="work-card" data-category="game" data-title="作品名" data-period="2026" data-description="ゲームの概要や担当、工夫した点を詳しく紹介します。" data-image="{{ '/images/test.png' | relative_url }}" data-github="" data-download="">
           <div class="work-image" style="background-image:url('{{ '/images/test.png' | relative_url }}')"><span class="work-number">01</span><span class="work-arrow">↗</span></div>
@@ -71,51 +72,51 @@
           <div class="work-tags"><span>使用技術</span><span>担当領域</span></div>
         </article>
         -->
-        <article class="work-card" data-category="game" data-title="Liner" data-period="2024" data-description="ゲームの概要や担当、工夫した点を詳しく紹介します。" data-image="{{ '/images/test.png' | relative_url }}" data-github="" data-download="">
-          <div class="work-image" style="background-image:url('{{ '/images/test.png' | relative_url }}')"><span class="work-number">01</span><span class="work-arrow">↗</span></div>
+        <article class="work-card" data-category="game" data-title="Liner" data-period="2024" data-description="音符を二個発射して、音符同士で間を挟むゲームです。スコアアタックや作曲モードが楽しめます。" data-image="{{ '/images/Liner.png' | relative_url }}" data-github="" data-download="">
+          <div class="work-image" style="background-image:url('{{ '/images/Liner.png' | relative_url }}')"><span class="work-number">01</span><span class="work-arrow">↗</span></div>
           <div class="work-meta"><span>GAME</span><span>2024</span></div>
           <h3>Liner</h3>
           <p>音符を二個発射して、音符同士で間を挟むゲームです。スコアアタックや作曲モードが楽しめます。</p>
           <div class="work-tags"><span>学内エンジン</span><span>1年制作</span><span>1ヶ月制作</span><span>チーム制作</span></div>
         </article>
-        <article class="work-card" data-category="game" data-title="Eyebyss" data-period="2024" data-description="ゲームの概要や担当、工夫した点を詳しく紹介します。" data-image="{{ '/images/test.png' | relative_url }}" data-github="" data-download="">
-          <div class="work-image" style="background-image:url('{{ '/images/test.png' | relative_url }}')"><span class="work-number">01</span><span class="work-arrow">↗</span></div>
+        <article class="work-card" data-category="game" data-title="Eyebyss" data-period="2024" data-description="インバースキネマティクスを活用して実装した触手をもつ敵と戦うアクションゲームです。" data-image="{{ '/images/Eyebyss.png' | relative_url }}" data-github="" data-download="">
+          <div class="work-image" style="background-image:url('{{ '/images/Eyebyss.png' | relative_url }}')"><span class="work-number">01</span><span class="work-arrow">↗</span></div>
           <div class="work-meta"><span>GAME</span><span>2024</span></div>
           <h3>Eyebyss</h3>
           <p>インバースキネマティックを活用して実装した触手をもつ敵と戦うアクションゲームです。</p>
           <div class="work-tags"><span>学内エンジン</span><span>1年制作</span><span>1ヶ月制作</span><span>チーム制作</span></div>
         </article>
-        <article class="work-card" data-category="game" data-title="DeckLimit" data-period="2025" data-description="ゲームの概要や担当、工夫した点を詳しく紹介します。" data-image="{{ '/images/test.png' | relative_url }}" data-github="" data-download="">
-          <div class="work-image" style="background-image:url('{{ '/images/test.png' | relative_url }}')"><span class="work-number">01</span><span class="work-arrow">↗</span></div>
+        <article class="work-card" data-category="game" data-title="DeckLimit" data-period="2025" data-description="カードの動きにこだわって作成したローグライクなカードゲームです。" data-image="{{ '/images/DeckLimit.png' | relative_url }}" data-github="" data-download="">
+          <div class="work-image" style="background-image:url('{{ '/images/DeckLimit.png' | relative_url }}')"><span class="work-number">01</span><span class="work-arrow">↗</span></div>
           <div class="work-meta"><span>GAME</span><span>2025</span></div>
           <h3>DeckLimit</h3>
           <p>カードの動きにこだわって作成したローグライクなカードゲームです。</p>
           <div class="work-tags"><span>学内エンジン</span><span>1年制作</span><span>2ヶ月制作</span><span>チーム制作</span></div>
         </article>
 
-        <article class="work-card" data-category="game" data-title="折り画面" data-period="2025" data-description="ゲームの概要や担当、工夫した点を詳しく紹介します。" data-image="{{ '/images/test.png' | relative_url }}" data-github="" data-download="">
-          <div class="work-image" style="background-image:url('{{ '/images/test.png' | relative_url }}')"><span class="work-number">01</span><span class="work-arrow">↗</span></div>
+        <article class="work-card" data-category="game" data-favorite="true" data-title="折り画面" data-period="2025" data-description="ステージ画面を折り、ステージを重ねてゴールを目指すゲームです。第14回全国専門学校ゲームコンペティションでゲームデザイン賞を受賞しました。" data-image="{{ '/images/Origamen.png' | relative_url }}" data-github="" data-download="">
+          <div class="work-image" style="background-image:url('{{ '/images/Origamen.png' | relative_url }}')"><span class="work-number">01</span><span class="work-arrow">↗</span></div>
           <div class="work-meta"><span>GAME</span><span>2025</span></div>
           <h3>折り画面</h3>
           <p>ステージ画面を折り、ステージを重ねてゴールを目指すゲームです。</p><p>[第14回全国専門学校ゲームコンペティション　ゲームデザイン賞受賞]</p>
           <div class="work-tags"><span>他者エンジン</span><span>2年制作</span><span>1ヶ月制作</span><span>チーム制作</span></div>
         </article>
-        <article class="work-card" data-category="game" data-title="チェインロープ" data-period="2025" data-description="ゲームの概要や担当、工夫した点を詳しく紹介します。" data-image="{{ '/images/test.png' | relative_url }}" data-github="" data-download="">
-          <div class="work-image" style="background-image:url('{{ '/images/test.png' | relative_url }}')"><span class="work-number">01</span><span class="work-arrow">↗</span></div>
+        <article class="work-card" data-category="game" data-title="チェインロープ" data-period="2025" data-description="ユニットをたどってゴールを目指すゲームです。プレイヤーの気持ちよさにこだわり制作しました。" data-image="{{ '/images/HangOh!.png' | relative_url }}" data-github="" data-download="">
+          <div class="work-image" style="background-image:url('{{ '/images/HangOh!.png' | relative_url }}')"><span class="work-number">01</span><span class="work-arrow">↗</span></div>
           <div class="work-meta"><span>GAME</span><span>2025</span></div>
           <h3>チェインロープ</h3>
           <p>ユニットをたどってゴールを目指すゲームです。プレイヤーの気持ちよさにこだわり制作しました。</p>
           <div class="work-tags"><span>自作エンジン</span><span>2年制作</span><span>1ヶ月制作</span><span>チーム制作</span></div>
         </article>
-        <article class="work-card" data-category="game" data-title="激流種ボードブルード" data-period="2025" data-description="ゲームの概要や担当、工夫した点を詳しく紹介します。" data-image="{{ '/images/test.png' | relative_url }}" data-github="" data-download="">
-          <div class="work-image" style="background-image:url('{{ '/images/test.png' | relative_url }}')"><span class="work-number">01</span><span class="work-arrow">↗</span></div>
+        <article class="work-card" data-category="game" data-title="激流種ボードブルード" data-period="2025" data-description="サメ型のボスと戦うゲームです。敵の攻撃をよけながらサメを釣りあげます。" data-image="{{ '/images/boardblud.png' | relative_url }}" data-github="" data-download="">
+          <div class="work-image" style="background-image:url('{{ '/images/boardblud.png' | relative_url }}')"><span class="work-number">01</span><span class="work-arrow">↗</span></div>
           <div class="work-meta"><span>GAME</span><span>2025</span></div>
-          <h3>Eyebyss</h3>
+          <h3>激流種ボードブルード</h3>
           <p>サメ型のボスと戦うゲームです。敵の攻撃をよけながらサメを釣りあげます。</p>
           <div class="work-tags"><span>他者エンジン</span><span>2年制作</span><span>1ヶ月制作</span><span>チーム制作</span></div>
         </article>
-        <article class="work-card" data-category="game" data-title="Ore" data-period="2026" data-description="ゲームの概要や担当、工夫した点を詳しく紹介します。" data-image="{{ '/images/test.png' | relative_url }}" data-github="" data-download="">
-          <div class="work-image" style="background-image:url('{{ '/images/test.png' | relative_url }}')"><span class="work-number">01</span><span class="work-arrow">↗</span></div>
+        <article class="work-card" data-category="game" data-title="Ore" data-period="2026" data-description="小さな味方 Ore を派遣し、鉱石を集めるゲームです。" data-image="{{ '/images/Ore.png' | relative_url }}" data-github="" data-download="">
+          <div class="work-image" style="background-image:url('{{ '/images/Ore.png' | relative_url }}')"><span class="work-number">01</span><span class="work-arrow">↗</span></div>
           <div class="work-meta"><span>GAME</span><span>2024</span></div>
           <h3>Ore</h3>
           <p>小さな味方「Ore」を派遣し、鉱石を集めるゲームです。</p>
