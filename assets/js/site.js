@@ -4,6 +4,37 @@
   const filters = [...document.querySelectorAll('.filter')];
   if (count) count.textContent = String(cards.length).padStart(2, '0');
 
+  const workGrid = document.querySelector('#work-grid');
+  const sortButton = document.querySelector('#sort-order');
+  const dateValue = (card) => {
+    const match = /^(\d{4})\/(\d{2})$/.exec(card.dataset.period || '');
+    if (match) return Number(match[1]) * 100 + Number(match[2]);
+    const yearOnly = /^(\d{4})$/.exec(card.dataset.period || '');
+    return yearOnly ? Number(yearOnly[1]) * 100 : null;
+  };
+  const sortCards = () => {
+    if (!workGrid || !sortButton) return;
+    const direction = sortButton.dataset.order === 'asc' ? 1 : -1;
+    const sorted = [...cards].sort((a, b) => {
+      const aDate = dateValue(a);
+      const bDate = dateValue(b);
+      if (aDate === null && bDate !== null) return 1;
+      if (bDate === null && aDate !== null) return -1;
+      return ((aDate || 0) - (bDate || 0)) * direction;
+    });
+    sorted.forEach((card) => workGrid.append(card));
+  };
+  sortCards();
+  if (sortButton) {
+    sortButton.addEventListener('click', () => {
+      const ascending = sortButton.dataset.order !== 'asc';
+      sortButton.dataset.order = ascending ? 'asc' : 'desc';
+      sortButton.textContent = ascending ? '制作日 ↑ 古い順' : '制作日 ↓ 新しい順';
+      sortButton.setAttribute('aria-label', ascending ? '制作日の新しい順に切り替える' : '制作日の古い順に切り替える');
+      sortCards();
+    });
+  }
+
   filters.forEach((button) => {
     button.addEventListener('click', () => {
       const category = button.dataset.filter;

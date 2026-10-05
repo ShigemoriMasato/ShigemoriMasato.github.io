@@ -53,13 +53,13 @@ bundle exec jekyll serve --livereload
 
 ## 作品の追加
 
-`index.html` の `work-grid` 内にあるコメント付き `<article class="work-card">` テンプレートを複製し、HTML コメントの外に置いて編集してください。`data-category` には `game` または `engine` を指定します。カード一覧では説明文を表示せず、`data-title`、`data-period`、`data-description`、`data-image` の情報はカードをクリックしたときの全画面詳細に表示します。画像は `images/` に追加してください。
+`index.html` の `work-grid` 内にあるコメント付き `<article class="work-card">` テンプレートを複製し、HTML コメントの外に置いて編集してください。`data-category` には `game` または `engine` を指定します。制作日は `data-period` に `yyyy/mm` 形式（例: `2025/04`）で設定してください。作品一覧の「制作日」ボタンで新しい順／古い順を切り替えられます。カード一覧では説明文を表示せず、`data-title`、`data-period`、`data-description`、`data-image` の情報はカードをクリックしたときの全画面詳細に表示します。画像は `images/games/` に追加してください。
 
 お気に入りとして表示する作品には `data-favorite="true"` を追加してください。FAVORITE フィルターは GAME／ENGINE のカテゴリをまたいで、その属性が付いた作品を表示します。現在は受賞作「折り画面」をお気に入りに設定しています。
 
 詳細画面のリンクアイコンは任意で指定できます。GitHub リンクは `data-github="https://github.com/..."`、ダウンロードリンクは `data-download="{{ '/downloads/作品.zip' | relative_url }}"` に URL を設定してください。不要なリンクは属性を空にするか削除すると、アイコンも表示されません。作品名、説明、技術タグなどもテンプレートから編集できます。カードをクリックして開く詳細画面は Esc キー、閉じるボタン、背景クリックで閉じられます。
 
-画像は `images/` に置き、カードの `work-image` に `style="background-image:url('{{ '/images/ファイル名.png' | relative_url }}')"` を設定します。作品カードを追加すると件数表示も自動で更新されます。カテゴリ絞り込みや件数表示は `assets/js/site.js` が担当しています。
+作品画像は `images/games/` に置き、カードの `data-image` と `work-image` の `background-image` の両方で `{{ '/images/games/ファイル名.png' | relative_url }}` を指定します。作品カードを追加すると件数表示も自動で更新されます。カテゴリ絞り込みや件数表示は `assets/js/site.js` が担当しています。
 
 ## 設定
 
