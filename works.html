@@ -12,13 +12,20 @@ permalink: /works/
       <div class="toolbar">
         <p class="count"><span id="work-count">00</span> PROJECTS</p>
         <div class="controls">
-          <div class="filters" role="group" aria-label="作品を絞り込む">
-            <button class="pill active" data-filter="all" aria-pressed="true">すべて</button>
-            <button class="pill" data-filter="game" aria-pressed="false">GAME</button>
-            <button class="pill" data-filter="engine" aria-pressed="false">ENGINE</button>
-            <button class="pill" data-filter="favorite" aria-pressed="false">FAVORITE</button>
+          <!-- 種類で絞り込み（四角いボタンを継ぎ目なくつなげる） -->
+          <div class="seg" role="group" aria-label="種類で絞り込む">
+            <button class="seg-btn active" type="button" data-filter="all" aria-pressed="true">すべて</button>
+            <button class="seg-btn" type="button" data-filter="game" aria-pressed="false">GAME</button>
+            <button class="seg-btn" type="button" data-filter="engine" aria-pressed="false">ENGINE</button>
           </div>
-          <button class="pill pill-outline" id="sort-order" type="button" data-order="desc">新しい順 ↓</button>
+          <!-- お気に入りだけ表示 -->
+          <label class="fav-check"><input type="checkbox" id="fav-only"><span>Favorite</span></label>
+          <!-- 並び替え（どこを押しても反対側に切り替わる） -->
+          <button class="sort-switch" id="sort-order" type="button" data-order="desc" aria-label="並び順: 新しい順。押すと古い順に切り替え">
+            <span class="sort-thumb" aria-hidden="true"></span>
+            <span class="sort-opt">新しい順</span>
+            <span class="sort-opt">古い順</span>
+          </button>
         </div>
       </div>
 
@@ -26,9 +33,9 @@ permalink: /works/
         <!--
         作品を追加するときは、この article を複製してコメントの外に置いてください。
         data-category は game / engine のいずれか。お気に入りは data-favorite="true"。
-        data-number は並び替えに使う番号です。
+        data-number は並び替えに使う番号（制作順）です。data-date は作成日、data-awards は受賞・ランキング（複数は " / " で区切る）。
         data-video（YouTube の URL）/ data-github / data-download は、空欄にするとボタンが表示されません。
-        <article class="work-card" data-number="15" data-category="game" data-title="作品名" data-period="2026" data-description="詳しい説明" data-image="{{ '/images/test.png' | relative_url }}" data-video="" data-github="" data-download="">
+        <article class="work-card" data-number="15" data-category="game" data-title="作品名" data-date="2026/01/01" data-period="2026" data-description="詳しい説明" data-awards="" data-image="{{ '/images/test.png' | relative_url }}" data-video="" data-github="" data-download="">
           <div class="work-image" style="background-image:url('{{ '/images/test.png' | relative_url }}')"></div>
           <div class="work-body">
             <div class="work-meta"><span>GAME</span><span>2026</span></div>
@@ -38,129 +45,129 @@ permalink: /works/
           </div>
         </article>
         -->
-        <article class="work-card" data-number="1" data-category="game" data-title="OvertheMoon" data-period="2024" data-description="シンプルなシューティングゲームです。" data-image="{{ '/images/games/OvertheMoon.png' | relative_url }}" data-video="https://youtu.be/5C-tGyxAC4I" data-github="" data-download="https://drive.google.com/file/d/1lD6pB8lApVHoUtXiOfPhx6_xKZjMroHJ/view?usp=drive_link">
+        <article class="work-card" data-number="1" data-category="game" data-title="OvertheMoon" data-date="2024/06/28" data-period="2024" data-description="シンプルなシューティングゲームです" data-image="{{ '/images/games/OvertheMoon.png' | relative_url }}" data-video="https://youtu.be/5C-tGyxAC4I" data-github="" data-download="https://drive.google.com/file/d/1lD6pB8lApVHoUtXiOfPhx6_xKZjMroHJ/view?usp=drive_link">
           <div class="work-image" style="background-image:url('{{ '/images/games/OvertheMoon.png' | relative_url }}')"></div>
           <div class="work-body">
             <div class="work-meta"><span>GAME</span><span>2024</span></div>
             <h3>OvertheMoon</h3>
-            <p>シンプルなシューティングゲームです。</p>
+            <p>シンプルなシューティングゲームです</p>
             <div class="work-tags"><span>学内エンジン</span><span>1年次</span><span>初作品</span><span>個人製作</span></div>
           </div>
         </article>
-        <article class="work-card" data-number="3" data-category="game" data-title="HangOh!" data-period="2024" data-description="書類の色を基準にスタンプを押して左右に振り分けるゲームです。" data-image="{{ '/images/games/HangOh.png' | relative_url }}" data-video="https://youtu.be/yOZNqJPXZ9w" data-github="" data-download="https://drive.google.com/file/d/1-6J_lNU9UzuA3-GAcK5pd-Z_6harjUhH/view?usp=drive_link">
-          <div class="work-image" style="background-image:url('{{ '/images/games/HangOh.png' | relative_url }}')"></div>
-          <div class="work-body">
-            <div class="work-meta"><span>GAME</span><span>2024</span></div>
-            <h3>HangOh!</h3>
-            <p>書類の色を基準にスタンプを押して左右に振り分けるゲームです。</p>
-            <div class="work-tags"><span>学内エンジン</span><span>1年次</span><span>1ヶ月制作</span><span>チーム制作</span></div>
-          </div>
-        </article>
-        <article class="work-card" data-number="4" data-category="game" data-title="Liner" data-period="2024" data-description="音符を二個発射して、音符同士で間を挟むゲームです。スコアアタックや作曲モードが楽しめます。" data-image="{{ '/images/games/Liner.png' | relative_url }}" data-video="https://youtu.be/kVQQBID5Lqs" data-github="" data-download="https://drive.google.com/file/d/1DGrFPNWNh6HfnJNe0yY8Pe36NsJ6n5uC/view?usp=drive_link">
-          <div class="work-image" style="background-image:url('{{ '/images/games/Liner.png' | relative_url }}')"></div>
-          <div class="work-body">
-            <div class="work-meta"><span>GAME</span><span>2024</span></div>
-            <h3>Liner</h3>
-            <p>音符を二個発射して、音符同士で間を挟むゲームです。</p>
-            <div class="work-tags"><span>学内エンジン</span><span>1年次</span><span>1ヶ月制作</span><span>チーム制作</span></div>
-          </div>
-        </article>
-        <article class="work-card" data-number="5" data-category="game" data-title="Eyebyss" data-period="2024" data-description="インバースキネマティクスを活用して実装した触手をもつ敵と戦うアクションゲームです。" data-image="{{ '/images/games/Eyebyss.png' | relative_url }}" data-video="https://youtu.be/Z7egCJrbgYo" data-github="" data-download="https://drive.google.com/file/d/1_nDr_uBFYRgyBBIrGhV8qyJXA34K2CrD/view?usp=drive_link">
-          <div class="work-image" style="background-image:url('{{ '/images/games/Eyebyss.png' | relative_url }}')"></div>
-          <div class="work-body">
-            <div class="work-meta"><span>GAME</span><span>2024</span></div>
-            <h3>Eyebyss</h3>
-            <p>IK で実装した触手をもつ敵と戦うアクションゲームです。</p>
-            <div class="work-tags"><span>学内エンジン</span><span>1年次</span><span>1ヶ月制作</span><span>チーム制作</span></div>
-          </div>
-        </article>
-        <article class="work-card" data-number="6" data-category="game" data-favorite="true" data-title="DeckLimit" data-period="2025" data-description="カードの動きにこだわって作成したローグライクなカードゲームです。" data-image="{{ '/images/games/DeckLimit.png' | relative_url }}" data-video="https://youtu.be/8dlKu0cVdQo" data-github="https://github.com/ShigemoriMasato/DeckLimit" data-download="https://drive.google.com/file/d/1Xuv3sZSiT-fTChjkx9YeyC1rMj73M29C/view?usp=drive_link">
-          <div class="work-image" style="background-image:url('{{ '/images/games/DeckLimit.png' | relative_url }}')"></div>
-          <div class="work-body">
-            <div class="work-meta"><span>GAME</span><span>2025</span></div>
-            <h3>DeckLimit</h3>
-            <p>カードの動きにこだわって作成したローグライクなカードゲームです。</p>
-            <div class="work-tags"><span>学内エンジン</span><span>1年次</span><span>2ヶ月制作</span><span>チーム制作</span></div>
-          </div>
-        </article>
-        <article class="work-card" data-number="7" data-category="game" data-favorite="true" data-title="折り画面" data-period="2025" data-description="ステージ画面を折り、ステージを重ねてゴールを目指すゲームです。第14回全国専門学校ゲームコンペティション ゲームデザイン賞を受賞しました。" data-image="{{ '/images/games/Origamen.png' | relative_url }}" data-video="https://youtu.be/gyXS57Kkg0s" data-github="https://github.com/saitoA1007/GJ_Game" data-download="https://drive.google.com/file/d/1qBmN8-ELhXXLletFiFeT4C4NnPMpz5K_/view?usp=drive_link">
-          <div class="work-image" style="background-image:url('{{ '/images/games/Origamen.png' | relative_url }}')"><span class="work-badge">ゲームデザイン賞</span></div>
-          <div class="work-body">
-            <div class="work-meta"><span>GAME</span><span>2025</span></div>
-            <h3>折り画面</h3>
-            <p>ステージ画面を折り、ステージを重ねてゴールを目指すゲームです。</p>
-            <div class="work-tags"><span>他者エンジン</span><span>2年次</span><span>1ヶ月制作</span><span>チーム制作</span></div>
-          </div>
-        </article>
-        <article class="work-card" data-number="9" data-category="game" data-favorite="true" data-title="チェインロープ" data-period="2025" data-description="ユニットをたどってゴールを目指すゲームです。プレイヤーの気持ちよさにこだわり制作しました。" data-image="{{ '/images/games/Chainroop.png' | relative_url }}" data-video="https://youtu.be/mwl4n8uevV4" data-github="https://github.com/ShigemoriMasato/TD2-1" data-download="https://drive.google.com/file/d/1IrD6IB8P4DQkTQptokiyiXI9-9G62b6a/view?usp=drive_link">
-          <div class="work-image" style="background-image:url('{{ '/images/games/Chainroop.png' | relative_url }}')"></div>
-          <div class="work-body">
-            <div class="work-meta"><span>GAME</span><span>2025</span></div>
-            <h3>チェインロープ</h3>
-            <p>ユニットをたどってゴールを目指すゲームです。</p>
-            <div class="work-tags"><span>自作エンジン</span><span>2年次</span><span>1ヶ月制作</span><span>チーム制作</span></div>
-          </div>
-        </article>
-        <article class="work-card" data-number="10" data-category="game" data-title="激流種ボードブルード" data-period="2025" data-description="サメ型のボスと戦うゲームです。敵の攻撃をよけながらサメを釣りあげます。" data-image="{{ '/images/games/boardblud.png' | relative_url }}" data-video="https://youtu.be/S-Q93WUmjZA" data-github="https://github.com/AsakawaSakuto/TD-2-2" data-download="https://drive.google.com/file/d/1wj1BMEtADbvtGI1BTEGfR_FgwskJ2f-S/view?usp=drive_link">
-          <div class="work-image" style="background-image:url('{{ '/images/games/boardblud.png' | relative_url }}')"></div>
-          <div class="work-body">
-            <div class="work-meta"><span>GAME</span><span>2025</span></div>
-            <h3>激流種ボードブルード</h3>
-            <p>サメ型のボスと戦うゲームです。</p>
-            <div class="work-tags"><span>他者エンジン</span><span>2年次</span><span>1ヶ月制作</span><span>チーム制作</span></div>
-          </div>
-        </article>
-        <article class="work-card" data-number="11" data-category="game" data-favorite="true" data-title="Ore" data-period="2026" data-description="小さな味方 Ore を派遣し、鉱石を集めるゲームです。" data-image="{{ '/images/games/Ore.png' | relative_url }}" data-video="https://youtu.be/1_QvqXK4IhE" data-github="https://github.com/ShigemoriMasato/TD2-3" data-download="https://drive.google.com/file/d/14kc4U04PeH7ptwDqpdLbxEYLke7g86B5/view?usp=drive_link">
-          <div class="work-image" style="background-image:url('{{ '/images/games/Ore.png' | relative_url }}')"></div>
-          <div class="work-body">
-            <div class="work-meta"><span>GAME</span><span>2026</span></div>
-            <h3>Ore</h3>
-            <p>小さな味方 Ore を派遣し、鉱石を集めるゲームです。</p>
-            <div class="work-tags"><span>自作エンジン</span><span>2年次</span><span>1ヶ月制作</span><span>チーム制作</span></div>
-          </div>
-        </article>
-        <article class="work-card" data-number="12" data-category="game" data-title="バトルぶち殺シアム" data-period="2026" data-description="5分間発生し続ける敵から生き延びるローグライクなゲームです。" data-image="{{ '/images/games/ButtleBuchikoroshiamu.png' | relative_url }}" data-video="https://youtu.be/T49hFOVSocs" data-github="https://github.com/ShigemoriMasato/TD2-4" data-download="https://drive.google.com/file/d/1dJhRQiVzFB5IGt_b4OVRu0pHJGmT1qPU/view?usp=drive_link">
-          <div class="work-image" style="background-image:url('{{ '/images/games/ButtleBuchikoroshiamu.png' | relative_url }}')"></div>
-          <div class="work-body">
-            <div class="work-meta"><span>GAME</span><span>2026</span></div>
-            <h3>バトルぶち殺シアム</h3>
-            <p>5分間発生し続ける敵から生き延びるローグライクなゲームです。</p>
-            <div class="work-tags"><span>自作エンジン</span><span>3年次</span><span>1ヶ月制作</span><span>チーム制作</span></div>
-          </div>
-        </article>
-        <article class="work-card" data-number="13" data-category="game" data-favorite="true" data-title="DropBlock" data-period="2026" data-description="数多のパーティクルから繰り広げられる演出とともに落ちものパズルを遊べるゲームです。" data-image="{{ '/images/games/DropBlock.png' | relative_url }}" data-video="https://youtu.be/v3E2A4JmeO8" data-github="https://github.com/ShigemoriMasato/SHEngine/releases/tag/DropBlock" data-download="https://drive.google.com/file/d/10X22PgaPL3uwwl_310aeNkY45_bfQwjs/view?usp=drive_link">
-          <div class="work-image" style="background-image:url('{{ '/images/games/DropBlock.png' | relative_url }}')"></div>
-          <div class="work-body">
-            <div class="work-meta"><span>GAME</span><span>2026</span></div>
-            <h3>DropBlock</h3>
-            <p>数多のパーティクル演出とともに落ちものパズルを遊べるゲームです。</p>
-            <div class="work-tags"><span>自作エンジン</span><span>3年次</span><span>卒業制作</span><span>個人製作</span></div>
-          </div>
-        </article>
-        <article class="work-card" data-number="2" data-category="game" data-title="断捨離" data-period="2024" data-description="操作方法でも楽しんでほしいと考えて作成したゲームです。" data-image="{{ '/images/games/Danshari.png' | relative_url }}" data-video="https://youtu.be/hNezp6e5JXk" data-github="" data-download="https://drive.google.com/file/d/1E53D3WXtWEquzvFdKME0iJS_rQUmQZqV/view?usp=drive_link">
+        <article class="work-card" data-number="2" data-category="game" data-title="断捨離" data-date="2024/08/31" data-period="2024" data-description="操作方法でも楽しんでほしいと考えて作成したゲームです" data-image="{{ '/images/games/Danshari.png' | relative_url }}" data-video="https://youtu.be/hNezp6e5JXk" data-github="" data-download="https://drive.google.com/file/d/1E53D3WXtWEquzvFdKME0iJS_rQUmQZqV/view?usp=drive_link">
           <div class="work-image" style="background-image:url('{{ '/images/games/Danshari.png' | relative_url }}')"></div>
           <div class="work-body">
             <div class="work-meta"><span>GAME</span><span>2024</span></div>
             <h3>断捨離</h3>
-            <p>操作方法でも楽しんでほしいと考えて作成したゲームです。</p>
-            <div class="work-tags"><span>学内エンジン</span><span>1年次</span><span>1ヶ月制作</span><span>個人制作</span></div>
+            <p>操作方法でも楽しんでほしいと考えて作成したゲームです</p>
+            <div class="work-tags"><span>学内エンジン</span><span>1年次</span><span>夏休み制作</span><span>個人制作</span></div>
           </div>
         </article>
-        <article class="work-card" data-number="8" data-category="game" data-title="Speeder" data-period="2025" data-description="エンジン制作に難航しながらなんとか作ったゲームです。" data-image="{{ '/images/games/Speeder.png' | relative_url }}" data-video="https://youtu.be/NOFXxm9XKPI" data-github="" data-download="https://drive.google.com/file/d/1wHER4OUDgVSGPqYIQ2vj_rJIcY_qvb83/view?usp=drive_link">
+        <article class="work-card" data-number="3" data-category="game" data-title="HangOh!" data-date="2024/09/13" data-period="2024" data-description="書類の色を基準にスタンプを押して左右に振り分けるゲームです" data-image="{{ '/images/games/HangOh.png' | relative_url }}" data-video="https://youtu.be/yOZNqJPXZ9w" data-github="" data-download="https://drive.google.com/file/d/1-6J_lNU9UzuA3-GAcK5pd-Z_6harjUhH/view?usp=drive_link">
+          <div class="work-image" style="background-image:url('{{ '/images/games/HangOh.png' | relative_url }}')"></div>
+          <div class="work-body">
+            <div class="work-meta"><span>GAME</span><span>2024</span></div>
+            <h3>HangOh!</h3>
+            <p>書類の色を基準にスタンプを押して左右に振り分けるゲームです</p>
+            <div class="work-tags"><span>学内エンジン</span><span>1年次</span><span>10日制作</span><span>3人制作</span></div>
+          </div>
+        </article>
+        <article class="work-card" data-number="4" data-category="game" data-title="Liner" data-date="2024/10/23" data-period="2024" data-description="音符を二個発射して、音符同士で間を挟むゲームですスコアアタックや作曲モードが楽しめます" data-awards="1,2学年ランキング 7位" data-image="{{ '/images/games/Liner.png' | relative_url }}" data-video="https://youtu.be/kVQQBID5Lqs" data-github="" data-download="https://drive.google.com/file/d/1DGrFPNWNh6HfnJNe0yY8Pe36NsJ6n5uC/view?usp=drive_link">
+          <div class="work-image" style="background-image:url('{{ '/images/games/Liner.png' | relative_url }}')"></div>
+          <div class="work-body">
+            <div class="work-meta"><span>GAME</span><span>2024</span></div>
+            <h3>Liner</h3>
+            <p>音符を二個発射して、音符同士で間を挟むゲームですスコアアタックや作曲モードが楽しめます</p>
+            <div class="work-tags"><span>学内エンジン</span><span>1年次</span><span>1ヶ月制作</span><span>3人制作</span></div>
+          </div>
+        </article>
+        <article class="work-card" data-number="5" data-category="game" data-title="Eyebyss" data-date="2024/11/27" data-period="2024" data-description="インバースキネマティクスを活用して実装した触手をもつ敵と戦うアクションゲームです" data-awards="1,2学年ランキング 10位 / かまたアワード 2Dエンジニア賞ノミネート / かまたアワード 新人賞ノミネート" data-image="{{ '/images/games/Eyebyss.png' | relative_url }}" data-video="https://youtu.be/Z7egCJrbgYo" data-github="" data-download="https://drive.google.com/file/d/1_nDr_uBFYRgyBBIrGhV8qyJXA34K2CrD/view?usp=drive_link">
+          <div class="work-image" style="background-image:url('{{ '/images/games/Eyebyss.png' | relative_url }}')"></div>
+          <div class="work-body">
+            <div class="work-meta"><span>GAME</span><span>2024</span></div>
+            <h3>Eyebyss</h3>
+            <p>インバースキネマティクスを活用して実装した触手をもつ敵と戦うアクションゲームです</p>
+            <div class="work-tags"><span>学内エンジン</span><span>1年次</span><span>1ヶ月制作</span><span>3人制作</span></div>
+          </div>
+        </article>
+        <article class="work-card" data-number="6" data-category="game" data-favorite="true" data-title="DeckLimit" data-date="2025/02/05" data-period="2025" data-description="カードの動きにこだわって作成したローグライクなカードゲームです" data-awards="1,2学年ランキング 25位" data-image="{{ '/images/games/DeckLimit.png' | relative_url }}" data-video="https://youtu.be/8dlKu0cVdQo" data-github="https://github.com/ShigemoriMasato/DeckLimit" data-download="https://drive.google.com/file/d/1Xuv3sZSiT-fTChjkx9YeyC1rMj73M29C/view?usp=drive_link">
+          <div class="work-image" style="background-image:url('{{ '/images/games/DeckLimit.png' | relative_url }}')"></div>
+          <div class="work-body">
+            <div class="work-meta"><span>GAME</span><span>2025</span></div>
+            <h3>DeckLimit</h3>
+            <p>カードの動きにこだわって作成したローグライクなカードゲームです</p>
+            <div class="work-tags"><span>学内エンジン</span><span>1年次</span><span>2ヶ月制作</span><span>3人制作</span></div>
+          </div>
+        </article>
+        <article class="work-card" data-number="7" data-category="game" data-title="Speeder" data-date="2025/08/28" data-period="2025" data-description="エンジン制作に難航しながらなんとか作ったゲームです" data-image="{{ '/images/games/Speeder.png' | relative_url }}" data-video="https://youtu.be/NOFXxm9XKPI" data-github="" data-download="https://drive.google.com/file/d/1wHER4OUDgVSGPqYIQ2vj_rJIcY_qvb83/view?usp=drive_link">
           <div class="work-image" style="background-image:url('{{ '/images/games/Speeder.png' | relative_url }}')"></div>
           <div class="work-body">
             <div class="work-meta"><span>GAME</span><span>2025</span></div>
             <h3>Speeder</h3>
-            <p>エンジン制作に難航しながらなんとか作ったゲームです。</p>
-            <div class="work-tags"><span>自作エンジン</span><span>2年次</span><span>1ヶ月制作</span><span>個人制作</span></div>
+            <p>エンジン制作に難航しながらなんとか作ったゲームです</p>
+            <div class="work-tags"><span>自作エンジン</span><span>2年次</span><span>夏休み制作</span><span>個人制作</span></div>
           </div>
         </article>
-        <article class="work-card" data-number="14" data-category="game" data-favorite="true" data-title="ドパミン" data-period="2026" data-description="エンジンが大体固まり、様々なものが作れるようになってきた時期の制作です。&#10;きれいな見た目が押しです。" data-image="{{ '/images/games/Dopamin.png' | relative_url }}" data-video="https://youtu.be/rosImTRZ_wc" data-github="https://github.com/saitoA1007/GJ3_10days" data-download="https://drive.google.com/file/d/1HZt4wGE8C-MdaeaFQS4ymlVBiWVIPa99/view?usp=drive_link">
+        <article class="work-card" data-number="8" data-category="game" data-favorite="true" data-title="折り画面" data-date="2025/09/10" data-period="2025" data-description="ステージ画面を折り、ステージを重ねてゴールを目指すゲームです" data-awards="第14回全国専門学校ゲームコンペティション ゲームデザイン賞 / 学校内ランキング 3位 / かまたアワード PZL・ADV賞ノミネート / かまたアワード 3Dエンジニア賞受賞" data-image="{{ '/images/games/Origamen.png' | relative_url }}" data-video="https://youtu.be/gyXS57Kkg0s" data-github="https://github.com/saitoA1007/GJ_Game" data-download="https://drive.google.com/file/d/1qBmN8-ELhXXLletFiFeT4C4NnPMpz5K_/view?usp=drive_link">
+          <div class="work-image" style="background-image:url('{{ '/images/games/Origamen.png' | relative_url }}')"><span class="work-badge">ゲームデザイン賞</span></div>
+          <div class="work-body">
+            <div class="work-meta"><span>GAME</span><span>2025</span></div>
+            <h3>折り画面</h3>
+            <p>ステージ画面を折り、ステージを重ねてゴールを目指すゲームです</p>
+            <div class="work-tags"><span>他者エンジン</span><span>2年次</span><span>10日制作</span><span>3人制作</span></div>
+          </div>
+        </article>
+        <article class="work-card" data-number="9" data-category="game" data-favorite="true" data-title="チェインロープ" data-date="2025/10/29" data-period="2025" data-description="ユニットをたどってゴールを目指すゲームですプレイヤーの気持ちよさにこだわり制作しました" data-awards="1,2学年ランキング4位 / かまたアワード 3Dアート部門ノミネート" data-image="{{ '/images/games/Chainroop.png' | relative_url }}" data-video="https://youtu.be/mwl4n8uevV4" data-github="https://github.com/ShigemoriMasato/TD2-1" data-download="https://drive.google.com/file/d/1IrD6IB8P4DQkTQptokiyiXI9-9G62b6a/view?usp=drive_link">
+          <div class="work-image" style="background-image:url('{{ '/images/games/Chainroop.png' | relative_url }}')"></div>
+          <div class="work-body">
+            <div class="work-meta"><span>GAME</span><span>2025</span></div>
+            <h3>チェインロープ</h3>
+            <p>ユニットをたどってゴールを目指すゲームですプレイヤーの気持ちよさにこだわり制作しました</p>
+            <div class="work-tags"><span>自作エンジン</span><span>2年次</span><span>1ヶ月制作</span><span>4人制作</span></div>
+          </div>
+        </article>
+        <article class="work-card" data-number="10" data-category="game" data-title="激流種ボードブルード" data-date="2025/12/10" data-period="2025" data-description="サメ型のボスと戦うゲームです敵の攻撃をよけながらサメを釣りあげます" data-awards="1,2学年ランキング26位" data-image="{{ '/images/games/boardblud.png' | relative_url }}" data-video="https://youtu.be/S-Q93WUmjZA" data-github="https://github.com/AsakawaSakuto/TD-2-2" data-download="https://drive.google.com/file/d/1wj1BMEtADbvtGI1BTEGfR_FgwskJ2f-S/view?usp=drive_link">
+          <div class="work-image" style="background-image:url('{{ '/images/games/boardblud.png' | relative_url }}')"></div>
+          <div class="work-body">
+            <div class="work-meta"><span>GAME</span><span>2025</span></div>
+            <h3>激流種ボードブルード</h3>
+            <p>サメ型のボスと戦うゲームです敵の攻撃をよけながらサメを釣りあげます</p>
+            <div class="work-tags"><span>他者エンジン</span><span>2年次</span><span>1ヶ月制作</span><span>3人制作</span></div>
+          </div>
+        </article>
+        <article class="work-card" data-number="11" data-category="game" data-favorite="true" data-title="Ore" data-date="2026/02/04" data-period="2026" data-description="小さな味方 Ore を派遣し、鉱石を集めるゲームです" data-awards="1,2学年ランキング9位" data-image="{{ '/images/games/Ore.png' | relative_url }}" data-video="https://youtu.be/1_QvqXK4IhE" data-github="https://github.com/ShigemoriMasato/TD2-3" data-download="https://drive.google.com/file/d/14kc4U04PeH7ptwDqpdLbxEYLke7g86B5/view?usp=drive_link">
+          <div class="work-image" style="background-image:url('{{ '/images/games/Ore.png' | relative_url }}')"></div>
+          <div class="work-body">
+            <div class="work-meta"><span>GAME</span><span>2026</span></div>
+            <h3>Ore</h3>
+            <p>小さな味方 Ore を派遣し、鉱石を集めるゲームです</p>
+            <div class="work-tags"><span>自作エンジン</span><span>2年次</span><span>1ヶ月制作</span><span>3人制作</span></div>
+          </div>
+        </article>
+        <article class="work-card" data-number="12" data-category="game" data-title="バトルぶち殺シアム" data-date="2026/06/01" data-period="2026" data-description="5分間発生し続ける敵から生き延びるローグライクなゲームです" data-awards="学年ランキング10位" data-image="{{ '/images/games/ButtleBuchikoroshiamu.png' | relative_url }}" data-video="https://youtu.be/T49hFOVSocs" data-github="https://github.com/ShigemoriMasato/TD2-4" data-download="https://drive.google.com/file/d/1dJhRQiVzFB5IGt_b4OVRu0pHJGmT1qPU/view?usp=drive_link">
+          <div class="work-image" style="background-image:url('{{ '/images/games/ButtleBuchikoroshiamu.png' | relative_url }}')"></div>
+          <div class="work-body">
+            <div class="work-meta"><span>GAME</span><span>2026</span></div>
+            <h3>バトルぶち殺シアム</h3>
+            <p>5分間発生し続ける敵から生き延びるローグライクなゲームです</p>
+            <div class="work-tags"><span>自作エンジン</span><span>3年次</span><span>4ヶ月制作</span><span>4人制作</span></div>
+          </div>
+        </article>
+        <article class="work-card" data-number="13" data-category="game" data-favorite="true" data-title="DropBlock" data-date="2026/08/21" data-period="2026" data-description="数多のパーティクルから繰り広げられる演出とともに落ちものパズルを遊べるゲームです" data-image="{{ '/images/games/DropBlock.png' | relative_url }}" data-video="https://youtu.be/v3E2A4JmeO8" data-github="https://github.com/ShigemoriMasato/SHEngine/releases/tag/DropBlock" data-download="https://drive.google.com/file/d/10X22PgaPL3uwwl_310aeNkY45_bfQwjs/view?usp=drive_link">
+          <div class="work-image" style="background-image:url('{{ '/images/games/DropBlock.png' | relative_url }}')"></div>
+          <div class="work-body">
+            <div class="work-meta"><span>GAME</span><span>2026</span></div>
+            <h3>DropBlock</h3>
+            <p>数多のパーティクルから繰り広げられる演出とともに落ちものパズルを遊べるゲームです</p>
+            <div class="work-tags"><span>自作エンジン</span><span>3年次</span><span>卒業制作</span><span>個人製作</span></div>
+          </div>
+        </article>
+        <article class="work-card" data-number="14" data-category="game" data-favorite="true" data-title="ドパミン" data-date="2026/09/10" data-period="2026" data-description="エンジンが大体固まり、様々なものが作れるようになってきた時期の制作です&#10;きれいな見た目が押しです" data-image="{{ '/images/games/Dopamin.png' | relative_url }}" data-video="https://youtu.be/rosImTRZ_wc" data-github="https://github.com/saitoA1007/GJ3_10days" data-download="https://drive.google.com/file/d/1HZt4wGE8C-MdaeaFQS4ymlVBiWVIPa99/view?usp=drive_link">
           <div class="work-image" style="background-image:url('{{ '/images/games/Dopamin.png' | relative_url }}')"></div>
           <div class="work-body">
             <div class="work-meta"><span>GAME</span><span>2026</span></div>
             <h3>ドパミン</h3>
-            <p>きれいな見た目が押しの作品です。</p>
+            <p>エンジンが大体固まり、様々なものが作れるようになってきた時期の制作です<br>きれいな見た目が押しです</p>
             <div class="work-tags"><span>他者エンジン</span><span>3年次</span><span>10日制作</span><span>4人制作</span></div>
           </div>
         </article>
@@ -177,6 +184,7 @@ permalink: /works/
       <div class="dialog-info">
         <h2 id="dialog-title"></h2>
         <p class="dialog-description"></p>
+        <ul class="dialog-awards" hidden></ul>
         <div class="dialog-tags"></div>
       </div>
       <div class="dialog-links" aria-label="作品リンク"></div>

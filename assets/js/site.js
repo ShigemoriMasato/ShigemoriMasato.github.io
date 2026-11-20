@@ -257,11 +257,37 @@
   const cards = [...document.querySelectorAll('.work-card')];
   const grid = document.getElementById('work-grid');
   const count = document.getElementById('work-count');
-  const filters = [...document.querySelectorAll('.pill[data-filter]')];
+  const segBtns = [...document.querySelectorAll('.seg-btn[data-filter]')];
+  const favOnly = document.getElementById('fav-only');
   const sortBtn = document.getElementById('sort-order');
+  let category = 'all';
+
   const updateCount = () => {
     if (count) count.textContent = String(cards.filter((c) => !c.hidden).length).padStart(2, '0');
   };
+  // 種類の絞り込みと Favorite のチェックを組み合わせて表示を切り替える
+  const applyFilter = () => {
+    const fav = favOnly?.checked;
+    cards.forEach((c) => {
+      const okCategory = category === 'all' || c.dataset.category === category;
+      const okFav = !fav || c.dataset.favorite === 'true';
+      c.hidden = !(okCategory && okFav);
+    });
+    updateCount();
+  };
+  segBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      category = btn.dataset.filter;
+      segBtns.forEach((b) => {
+        b.classList.toggle('active', b === btn);
+        b.setAttribute('aria-pressed', String(b === btn));
+      });
+      applyFilter();
+    });
+  });
+  favOnly?.addEventListener('change', applyFilter);
+
+  // 並び替え: 左 = 新しい順 / 右 = 古い順。ボタンのどこを押しても反対側へ切り替わる
   const sortCards = () => {
     if (!grid || !sortBtn) return;
     const dir = sortBtn.dataset.order === 'asc' ? 1 : -1;
@@ -272,24 +298,13 @@
   sortBtn?.addEventListener('click', () => {
     const next = sortBtn.dataset.order === 'desc' ? 'asc' : 'desc';
     sortBtn.dataset.order = next;
-    sortBtn.textContent = next === 'desc' ? '新しい順 ↓' : '古い順 ↑';
+    sortBtn.setAttribute('aria-label', next === 'desc'
+      ? '並び順: 新しい順。押すと古い順に切り替え'
+      : '並び順: 古い順。押すと新しい順に切り替え');
     sortCards();
   });
-  filters.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const f = btn.dataset.filter;
-      filters.forEach((b) => {
-        b.classList.toggle('active', b === btn);
-        b.setAttribute('aria-pressed', String(b === btn));
-      });
-      cards.forEach((c) => {
-        c.hidden = f === 'favorite' ? c.dataset.favorite !== 'true' : f !== 'all' && c.dataset.category !== f;
-      });
-      updateCount();
-    });
-  });
   sortCards();
-  updateCount();
+  applyFilter();
 
   /* ============================================================
      作品詳細ダイアログ
@@ -328,6 +343,7 @@
     const media = dialog.querySelector('.dialog-media');
     const meta = dialog.querySelector('.dialog-meta');
     const desc = dialog.querySelector('.dialog-description');
+    const awards = dialog.querySelector('.dialog-awards');
     const tags = dialog.querySelector('.dialog-tags');
     const links = dialog.querySelector('.dialog-links');
     const closeBtn = dialog.querySelector('.dialog-close');
@@ -335,8 +351,19 @@
     const open = (card) => {
       const name = card.dataset.title || card.querySelector('h3')?.textContent || '';
       title.textContent = name;
-      meta.textContent = `${(card.dataset.category || '').toUpperCase()}${card.dataset.period ? ` / ${card.dataset.period}` : ''}`;
+      const when = card.dataset.date ? card.dataset.date.replace(/\//g, '.') : card.dataset.period;
+      meta.textContent = `${(card.dataset.category || '').toUpperCase()}${when ? ` / ${when}` : ''}`;
       desc.textContent = card.dataset.description || card.querySelector('.work-body p')?.textContent || '';
+      // 受賞・ランキング（" / " 区切り）
+      const list = (card.dataset.awards || '').split(' / ').map((t) => t.trim()).filter(Boolean);
+      if (awards) {
+        awards.replaceChildren(...list.map((t) => {
+          const li = document.createElement('li');
+          li.textContent = t;
+          return li;
+        }));
+        awards.hidden = !list.length;
+      }
       tags.replaceChildren(...[...card.querySelectorAll('.work-tags span')].map((t) => {
         const s = document.createElement('span');
         s.textContent = t.textContent;

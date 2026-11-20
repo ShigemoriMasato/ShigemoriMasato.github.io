@@ -1,10 +1,10 @@
 /* ============================================================
    フォント設定
-   サイトの文字は、用途ごとに 5 つの「スロット」に分けています。
+   サイトの文字は、用途ごとに 6 つの「スロット」に分けています。
    このファイルだけ書き換えれば、サイト全体のフォントが切り替わります。
 
    スロット1 … 見出し
-                名前（薫森 将人）、ホームのタイル名、ページ名（制作作品 など）、
+                名前（薫森 将人）、ページ名（制作作品 など）、
                 作品名、詳細ウィンドウの作品名、フッターの名前、404 の見出し
    スロット2 … 本文
                 説明文、紹介文、フリガナ、ボタン（ダウンロード など）、そのほか全般
@@ -15,6 +15,8 @@
                 「Shigemori Masato」「Portfolio」、ページ切り替えボタン（Works など）
    スロット5 … 大きな数字
                 404、エンジン紹介の「40,000,000」
+   スロット6 … ホームのボタン
+                ホームの「制作作品」「プロフィール」「説明資料」
 
 
    ■ フォントの入れ方
@@ -60,6 +62,13 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Nagomi Gokuboso Gothic';
+  src: url('../../fonts/NagomiGokubosoGothic-ExtraLight.woff') format('woff'),
+       url('../../fonts/NagomiGokubosoGothic-ExtraLight.otf') format('opentype');
+  font-display: swap;
+}
+
 /* Google Fonts を使うときは、ここに @import url(...); を貼る */
 
 /* フォントファイルを追加するときのひな形（使うときは前後の / * と * / を消す）
@@ -72,14 +81,23 @@
 
 
 /* ---------- 割り当て ----------
-   yosugara に入っていない漢字（「薫」「粒」など）は、2 番目に書いたフォントで表示されます */
+   1 番目のフォントに入っていない文字は、2 番目に書いたフォントで表示されます */
 :root {
-  --font-slot1: 'yosugara', 'Honoka Shin Antique Kaku', sans-serif;                  /* スロット1: 見出し */
-  --font-slot2: 'Honoka Shin Antique Kaku', sans-serif;                              /* スロット2: 本文 */
-  --font-slot3: 'Honoka Shin Antique Kaku', sans-serif;                              /* スロット3: ラベル */
-  --font-slot4: 'yosugara', 'Honoka Shin Antique Kaku', sans-serif;                  /* スロット4: 上部のバー */
-  --font-slot5: '851Gkktt', 'Honoka Shin Antique Kaku', sans-serif;                  /* スロット5: 大きな数字 */
+  --font-slot1: 'Honoka Shin Antique Kaku', sans-serif;                        /* スロット1: 見出し */
+  --font-slot2: 'Nagomi Gokuboso Gothic', 'Honoka Shin Antique Kaku', sans-serif; /* スロット2: 本文 */
+  --font-slot3: 'Nagomi Gokuboso Gothic', 'Honoka Shin Antique Kaku', sans-serif; /* スロット3: ラベル */
+  --font-slot4: 'yosugara', 'Honoka Shin Antique Kaku', sans-serif;            /* スロット4: 上部のバー */
+  --font-slot5: '851Gkktt', 'Honoka Shin Antique Kaku', sans-serif;            /* スロット5: 大きな数字 */
+  --font-slot6: 'yosugara', 'Honoka Shin Antique Kaku', sans-serif;            /* スロット6: ホームのボタン */
 }
 
 /* 太字のないフォントを無理に太くしない（にじんだ見た目になるのを防ぐ） */
 body { font-synthesis: none; }
+
+/* Nagomi（本文・ラベル）は極細なので、文字の輪郭をほんの少し太らせて読みやすくしています。
+   太さは --nagomi-stroke で調整（0 にすると元の細さ、大きくするほど太い） */
+:root { --nagomi-stroke: .2px; }
+body { -webkit-text-stroke: var(--nagomi-stroke); }
+/* Nagomi 以外のフォントを使っている場所は太らせない */
+h1, h2, h3, .intro-name, .footer-name, .tile-label, .topbar, .engine-count, .notfound-code { -webkit-text-stroke: 0; }
+.footer-name span { -webkit-text-stroke: var(--nagomi-stroke); } /* フッターのローマ字は Nagomi なので太らせる */
