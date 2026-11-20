@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  {%- capture full_title -%}{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}{%- endcapture -%}
+  {%- assign page_desc = page.description | default: site.description -%}
+  <title>{{ full_title }}</title>
+  <meta name="description" content="{{ page_desc | escape }}">
+  {%- if page.noindex %}
+  <meta name="robots" content="noindex">
+  {%- else %}
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  {%- endif %}
+
+  <!-- SNS で共有したときのカード表示（OGP） -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="{{ site.title | escape }}">
+  <meta property="og:title" content="{{ full_title | escape }}">
+  <meta property="og:description" content="{{ page_desc | escape }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:image" content="{{ '/images/ogp.png' | absolute_url }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- ファビコン -->
+  <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
+  <link rel="icon" href="{{ '/assets/favicon-32.png' | relative_url }}" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="{{ '/assets/apple-touch-icon.png' | relative_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+  <!-- 背景のパーティクル（マウスに反応） -->
+  <canvas id="particles" aria-hidden="true"></canvas>
+
+  <!-- 上部の黒いバー（上段: 名前とタイトル / 下段: ページ切り替えボタン） -->
+  <header class="topbar">
+    <div class="topbar-row">
+      <p class="topbar-name">Shigemori Masato</p>
+      <a class="topbar-title" href="{{ '/' | relative_url }}">Portfolio</a>
+      <span></span>
+    </div>
+    <!-- ページを増やすときはここに a を追加すると、ボタンが自動で等幅に並びます -->
+    <nav class="topnav" aria-label="ページ">
+      <a href="{{ '/works/' | relative_url }}"{% if page.url == '/works/' %} class="active" aria-current="page"{% endif %}>Works</a>
+      <a href="{{ '/profile/' | relative_url }}"{% if page.url == '/profile/' %} class="active" aria-current="page"{% endif %}>Profile</a>
+      <a href="{{ '/docs/' | relative_url }}"{% if page.url == '/docs/' %} class="active" aria-current="page"{% endif %}>Documents</a>
+      <a href="{{ '/engine/' | relative_url }}"{% if page.url == '/engine/' %} class="active" aria-current="page"{% endif %}>Engine</a>
+    </nav>
+  </header>
+
+  <!-- 白く半透明なボード -->
+  <main class="board">
+{{ content }}
+  </main>
+
+  <!-- 全ページ共通のフッター -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-id">
+        <p class="footer-name">薫森 将人 <span>Shigemori Masato</span></p>
+        <p class="footer-copy">© 2026 Shigemori Masato</p>
+      </div>
+      <!-- 外部リンクを増やすときは、この a を複製して href と aria-label とアイコンを差し替えてください -->
+      <nav class="footer-links" aria-label="外部リンク">
+        <a class="square-btn" href="https://github.com/ShigemoriMasato" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.55.1.76-.24.76-.54v-2.1c-3.1.67-3.76-1.32-3.76-1.32-.5-1.29-1.24-1.63-1.24-1.63-1.01-.69.08-.68.08-.68 1.12.08 1.7 1.15 1.7 1.15.99 1.69 2.59 1.2 3.22.92.1-.71.39-1.2.7-1.48-2.48-.28-5.09-1.24-5.09-5.53 0-1.22.44-2.21 1.15-2.99-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.05 1.14a10.6 10.6 0 0 1 5.55 0c2.11-1.44 3.05-1.14 3.05-1.14.61 1.54.23 2.68.11 2.96.72.78 1.15 1.77 1.15 2.99 0 4.3-2.62 5.24-5.11 5.52.4.35.75 1.03.75 2.08v3.08c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z"/></svg>
+        </a>
+        <a class="square-btn" href="https://www.youtube.com/@LE3A_08_%E3%82%B7%E3%82%B2%E3%83%A2%E3%83%AA_%E3%83%9E%E3%82%B5%E3%83%88" target="_blank" rel="noopener noreferrer" aria-label="YouTube チャンネル" title="YouTube">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8ZM9.7 15.1V8.9L15.2 12l-5.5 3.1Z"/></svg>
+        </a>
+        <a class="square-btn" href="mailto:ktm65535@gmail.com" aria-label="メールを送る" title="Mail">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M3.5 5.5h17v13h-17z M3.5 6l8.5 7 8.5-7"/></svg>
+        </a>
+      </nav>
+      <button class="square-btn to-top" id="to-top" type="button" aria-label="ページの一番上に戻る" title="Top">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" d="M12 19V5 M5.5 11.5 12 5l6.5 6.5"/></svg>
+      </button>
+    </div>
+  </footer>
+
+  <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+</body>
+</html>
