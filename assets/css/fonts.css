@@ -1,0 +1,85 @@
+/* ============================================================
+   フォント設定
+   サイトの文字は、用途ごとに 5 つの「スロット」に分けています。
+   このファイルだけ書き換えれば、サイト全体のフォントが切り替わります。
+
+   スロット1 … 見出し
+                名前（薫森 将人）、ホームのタイル名、ページ名（制作作品 など）、
+                作品名、詳細ウィンドウの作品名、フッターの名前、404 の見出し
+   スロット2 … 本文
+                説明文、紹介文、フリガナ、ボタン（ダウンロード など）、そのほか全般
+   スロット3 … ラベル（小さな文字）
+                タグ、作品の「GAME / 2026」、件数（14 PROJECTS）、絞り込みボタン、
+                ホームの GitHub / YouTube / Mail ボタン、フッターのローマ字・著作権表記
+   スロット4 … 上部のバー
+                「Shigemori Masato」「Portfolio」、ページ切り替えボタン（Works など）
+   スロット5 … 大きな数字
+                404、エンジン紹介の「40,000,000」
+
+
+   ■ フォントの入れ方
+
+   【A】Google Fonts を使う場合
+     1. https://fonts.google.com でフォントを選び、「Get font」→「Get embed code」を開く
+     2. 「@import」を選び、表示された @import url(...); の 1 行を、下の「読み込み」に貼る
+     3. 下の「割り当て」で、使いたいスロットにフォント名を書く
+          例: --font-slot1: 'Zen Kaku Gothic New', sans-serif;
+
+   【B】フォントファイル（.woff2 / .woff / .ttf / .otf）を使う場合
+     1. ファイルをリポジトリ直下の fonts/ に置く
+     2. 下の「読み込み」にある @font-face のひな形のコメントを外し、
+        font-family（好きな名前）と url（ファイル名）を書き換える
+     3. 「割り当て」で、その名前をスロットに書く
+
+   ・フォント名の後ろに書いたものは、そのフォントが読み込めないときの予備です。
+     日本語を含まない英字フォントを指定するときは、2 番目に日本語フォント
+     （例: 'Noto Sans JP'）を書いておくと、日本語部分がそちらで表示されます。
+   ============================================================ */
+
+
+/* ---------- 読み込み ---------- */
+
+/* fonts/ に置いたフォントファイル
+   .woff は元のファイルを軽くしたもの（読み込みが速い）。読めない環境では元の .ttf / .otf を使う */
+@font-face {
+  font-family: 'yosugara';
+  src: url('../../fonts/yosugaraver1_2.woff') format('woff'),
+       url('../../fonts/yosugaraver1_2.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Honoka Shin Antique Kaku';
+  src: url('../../fonts/Honoka-Shin-Antique-Kaku_M.woff') format('woff'),
+       url('../../fonts/Honoka-Shin-Antique-Kaku_M.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: '851Gkktt';
+  src: url('../../fonts/851Gkktt_005.woff') format('woff'),
+       url('../../fonts/851Gkktt_005.ttf') format('truetype');
+  font-display: swap;
+}
+
+/* Google Fonts を使うときは、ここに @import url(...); を貼る */
+
+/* フォントファイルを追加するときのひな形（使うときは前後の / * と * / を消す）
+@font-face {
+  font-family: 'MyFont';
+  src: url('../../fonts/MyFont.woff2') format('woff2');
+  font-display: swap;
+}
+*/
+
+
+/* ---------- 割り当て ----------
+   yosugara に入っていない漢字（「薫」「粒」など）は、2 番目に書いたフォントで表示されます */
+:root {
+  --font-slot1: 'yosugara', 'Honoka Shin Antique Kaku', sans-serif;                  /* スロット1: 見出し */
+  --font-slot2: 'Honoka Shin Antique Kaku', sans-serif;                              /* スロット2: 本文 */
+  --font-slot3: 'Honoka Shin Antique Kaku', sans-serif;                              /* スロット3: ラベル */
+  --font-slot4: 'yosugara', 'Honoka Shin Antique Kaku', sans-serif;                  /* スロット4: 上部のバー */
+  --font-slot5: '851Gkktt', 'Honoka Shin Antique Kaku', sans-serif;                  /* スロット5: 大きな数字 */
+}
+
+/* 太字のないフォントを無理に太くしない（にじんだ見た目になるのを防ぐ） */
+body { font-synthesis: none; }

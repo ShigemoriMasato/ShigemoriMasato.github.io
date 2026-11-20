@@ -1,6 +1,8 @@
 (() => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const TAU = Math.PI * 2;
+  // パーティクルの色: R・G・B それぞれ 0.8〜1.0（204〜255）の範囲でランダム
+  const randomColor = () => [0, 0, 0].map(() => 204 + ((Math.random() * 52) | 0)).join(',');
 
   /* ============================================================
      背景パーティクル
@@ -11,7 +13,6 @@
   const bg = document.getElementById('particles');
   if (bg) {
     const ctx = bg.getContext('2d');
-    const COLORS = ['127,220,255', '120,145,255', '255,255,255', '176,128,255'];
     const RADIUS = 170;   // マウスの影響範囲
     const LINK = 130;     // マウスと線で結ぶ距離
     const mouse = { x: -9999, y: -9999, vx: 0, vy: 0, active: false };
@@ -24,7 +25,7 @@
       r: 0.7 + Math.random() ** 2 * 2.2,
       z: 0.35 + Math.random() * 0.65,           // 奥行き（速度と明るさに影響）
       a: 0.25 + Math.random() * 0.55,
-      c: COLORS[(Math.random() * COLORS.length) | 0]
+      c: randomColor()
     });
 
     const resize = () => {
@@ -46,8 +47,8 @@
       // カーソル周りのうっすらした光
       if (mouse.active) {
         const g = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, RADIUS * 1.4);
-        g.addColorStop(0, 'rgba(90,140,255,0.10)');
-        g.addColorStop(1, 'rgba(90,140,255,0)');
+        g.addColorStop(0, 'rgba(255,255,255,0.06)');
+        g.addColorStop(1, 'rgba(255,255,255,0)');
         ctx.fillStyle = g;
         ctx.fillRect(mouse.x - RADIUS * 1.4, mouse.y - RADIUS * 1.4, RADIUS * 2.8, RADIUS * 2.8);
       }
@@ -103,7 +104,7 @@
           const dy = p.y - mouse.y;
           const d2 = dx * dx + dy * dy;
           if (d2 < LINK * LINK) {
-            ctx.strokeStyle = `rgba(150,190,255,${(1 - Math.sqrt(d2) / LINK) * 0.22})`;
+            ctx.strokeStyle = `rgba(${p.c},${(1 - Math.sqrt(d2) / LINK) * 0.22})`;
             ctx.lineWidth = 0.6;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
@@ -170,6 +171,7 @@
         r,
         a: arm * (TAU / 3) + r * 5.2 + (Math.random() - 0.5) * (0.9 - r * 0.5),
         s: 0.6 + Math.random() * 0.8,
+        c: randomColor(),
         ox: 0, oy: 0
       };
     });
@@ -188,7 +190,7 @@
 
     const draw = (t) => {
       ctx.globalCompositeOperation = 'source-over';
-      ctx.fillStyle = '#05070c';
+      ctx.fillStyle = '#000';
       ctx.fillRect(0, 0, W, H);
       ctx.globalCompositeOperation = 'lighter';
       const cx = W / 2, cy = H / 2;
@@ -212,9 +214,7 @@
         x += s.ox;
         y += s.oy;
         const inner = 1 - s.r;
-        ctx.fillStyle = inner > 0.75
-          ? `rgba(255,255,255,${0.5 + inner * 0.4})`
-          : `rgba(${110 + inner * 140 | 0},${150 + inner * 90 | 0},255,${0.35 + inner * 0.5})`;
+        ctx.fillStyle = `rgba(${s.c},${0.4 + inner * 0.55})`;
         const size = 0.8 + inner * 1.1;
         ctx.fillRect(x, y, size, size);
       }
