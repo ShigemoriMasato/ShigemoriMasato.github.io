@@ -350,6 +350,47 @@ a:focus-visible, button:focus-visible, .work-card:focus-visible { outline: 2px s
 .tile-arrow { position: absolute; right: 24px; bottom: 26px; font-size: 22px; transition: transform .22s; }
 .tile:hover .tile-arrow { transform: translateX(5px); }
 
+/* ---------- プロフィール ---------- */
+.profile-head { padding-bottom: 0; }
+.profile-head .section-head { margin-bottom: 0; }
+.profile-head + .intro { border-top: 0; padding-top: 24px; }
+.intro-side { margin-left: auto; }
+.skills { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.skills li {
+  min-width: 150px;
+  padding: 12px 20px;
+  border: 1.5px solid #12151b;
+  background: rgba(255, 255, 255, .55);
+  text-align: center;
+  font: 14px var(--font-slot3);
+  letter-spacing: .06em;
+  color: var(--text);
+}
+/* 自己紹介文（Markdown） */
+.md-box { padding: 28px 32px; border: 1.5px solid #12151b; background: rgba(255, 255, 255, .55); color: var(--text); font-size: 14px; line-height: 2; }
+.md-box > :first-child { margin-top: 0; }
+.md-box > :last-child { margin-bottom: 0; }
+.md-box h1, .md-box h2, .md-box h3 { margin: 1.4em 0 .5em; line-height: 1.4; color: var(--ink); }
+.md-box a { color: var(--accent-text); text-decoration: underline; }
+/* 経歴 */
+.career-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px; align-items: start; }
+.career-table { width: 100%; border-collapse: collapse; background: rgba(255, 255, 255, .55); }
+.career-table caption { text-align: left; padding-bottom: 10px; font-family: var(--font-slot1); font-size: 17px; color: var(--ink); }
+.career-table th, .career-table td { padding: 12px 16px; border: 1px solid rgba(18, 21, 27, .35); text-align: left; vertical-align: top; font-size: 13.5px; line-height: 1.7; color: var(--text); }
+.career-table th { width: 72px; font: 14px var(--font-slot5); letter-spacing: .04em; color: var(--ink); white-space: nowrap; }
+.award-work { display: block; margin-top: 2px; font: 11px var(--font-slot3); letter-spacing: .06em; color: var(--muted); }
+/* 趣味 / 特技 */
+.hobby-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.hobby-card { position: relative; display: flex; flex-direction: column; min-height: 320px; padding: 24px 26px; border-radius: 0; outline: 2px solid #12151b; outline-offset: 4px; }
+.hobby-title { font-family: var(--font-slot6); font-size: clamp(24px, 3vw, 32px); line-height: 1.2; }
+.hobby-steam { justify-content: space-between; background: radial-gradient(circle at 80% 15%, #1b2f55 0, transparent 60%), #0b0d12; color: #fff; transition: transform .25s ease, box-shadow .25s ease; }
+.hobby-steam:hover { transform: translateY(-4px); box-shadow: 0 20px 44px rgba(10, 14, 30, .28); }
+.hobby-icon { width: 120px; height: 75px; align-self: center; opacity: .9; }
+.hobby-arrow { align-self: flex-end; font-size: 22px; transition: transform .22s; }
+.hobby-steam:hover .hobby-arrow { transform: translate(3px, -3px); }
+.hobby-music { gap: 16px; background: rgba(255, 255, 255, .55); color: var(--ink); }
+.hobby-music img { flex: 1; width: 100%; min-height: 200px; object-fit: cover; display: block; }
+
 /* ---------- 画面左下の Home ボタン ---------- */
 .home-fab {
   position: fixed;
@@ -357,14 +398,14 @@ a:focus-visible, button:focus-visible, .work-card:focus-visible { outline: 2px s
   z-index: 35;
   display: grid;
   place-items: center;
-  min-width: 88px;
-  height: 44px;
-  padding: 0 18px;
-  border: 1.5px solid #12151b;
+  min-width: 176px;
+  height: 88px;
+  padding: 0 36px;
+  border: 3px solid #12151b;
   border-radius: 0;
   background: #fff;
   color: #12151b;
-  font: 14px var(--font-slot4);
+  font: 28px var(--font-slot4);
   letter-spacing: .12em;
   box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
   transition: background .18s, color .18s, transform .18s;
@@ -502,6 +543,13 @@ body.dialog-open { overflow: hidden; }
 
 /* ---------- レスポンシブ ---------- */
 @media (max-width: 860px) {
+  .career-grid, .hobby-grid { grid-template-columns: 1fr; }
+  .hobby-card { min-height: 0; }
+  .hobby-steam { min-height: 220px; }
+  .hobby-music img { flex: none; height: auto; aspect-ratio: 3 / 2; min-height: 0; }
+  .intro { flex-wrap: wrap; }
+  .intro-side { margin-left: 0; width: 100%; }
+  .skills { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
   .doc-card { grid-template-columns: 1fr; }
   .doc-body { padding: 22px 24px; }
   .work-grid { grid-template-columns: repeat(2, 1fr); }

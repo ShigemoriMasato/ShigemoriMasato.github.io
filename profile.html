@@ -1,9 +1,74 @@
 ---
 layout: default
 title: プロフィール
+description: "薫森将人のプロフィール。経歴、受賞歴、使用技術、趣味を紹介します。"
 permalink: /profile/
 ---
-<section class="section">
+<!-- ========== プロフィール（ホームと同じ部品＋右側に使用技術） ========== -->
+<section class="section profile-head">
   <div class="section-head"><h2>プロフィール</h2></div>
-  <!-- ここにプロフィールの内容を追加してください。画像は images/Profile/ に置くと整理しやすいです -->
+</section>
+{%- capture skills -%}
+<ul class="skills" aria-label="使用技術">
+  <!-- 使用技術を増やすときは li を追加 -->
+  <li>C++</li>
+  <li>DirectX</li>
+</ul>
+{%- endcapture -%}
+{% include intro.html side=skills %}
+
+<!-- ========== 自己紹介文（_includes/profile-about.md に Markdown で書く。空の間は表示しない） ========== -->
+{%- capture about_md -%}{% include profile-about.md %}{%- endcapture -%}
+{%- assign about_html = about_md | markdownify -%}
+{%- assign about_text = about_html | strip_html | strip -%}
+{%- if about_text != "" %}
+<section class="section about-md">
+  <div class="md-box">{{ about_html }}</div>
+</section>
+{%- endif %}
+
+<!-- ========== 経歴 ========== -->
+<section class="section career">
+  <div class="section-head"><h2>経歴</h2></div>
+  <div class="career-grid">
+    <table class="career-table">
+      <caption>学歴</caption>
+      <tbody>
+        <tr><th scope="row">2021</th><td>埼玉県 草加市立 草加中学校 卒業</td></tr>
+        <tr><th scope="row">2021</th><td>埼玉県立 草加南高等学校 普通科 入学</td></tr>
+        <tr><th scope="row">2024</th><td>埼玉県立 草加南高等学校 普通科 卒業</td></tr>
+        <tr><th scope="row">2024</th><td>日本工学院専門学校 ゲームクリエイター科四年制 入学</td></tr>
+        <tr><th scope="row">2028</th><td>日本工学院専門学校 ゲームクリエイター科四年制 卒業見込</td></tr>
+      </tbody>
+    </table>
+    <table class="career-table award-table">
+      <caption>受賞・ノミネート</caption>
+      <tbody>
+        <tr><td>第15回 全国専門学校ゲームコンペティション プレイアブル賞 受賞<span class="award-work">折り画面</span></td></tr>
+        <tr><td>かまたゲームアワード 2025 3Dエンジニア部門 受賞<span class="award-work">折り画面</span></td></tr>
+        <tr><td>かまたゲームアワード 2025 PZL・ADV部門 ノミネート<span class="award-work">折り画面</span></td></tr>
+        <tr><td>かまたゲームアワード 2025 3Dアート部門 ノミネート<span class="award-work">チェインロープ</span></td></tr>
+        <tr><td>かまたゲームアワード 2024 2Dエンジニア部門 ノミネート<span class="award-work">Eyebyss</span></td></tr>
+        <tr><td>かまたゲームアワード 2024 新人部門 ノミネート<span class="award-work">Eyebyss</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ========== 趣味 / 特技 ========== -->
+<section class="section hobby">
+  <div class="section-head"><h2>趣味 / 特技</h2></div>
+  <div class="hobby-grid">
+    <!-- Steam: カード全体がプロフィールへのリンク -->
+    <a class="hobby-card hobby-steam" href="https://steamcommunity.com/profiles/76561199255307693/" target="_blank" rel="noopener noreferrer">
+      <span class="hobby-title">Steam</span>
+      <svg class="hobby-icon" viewBox="0 0 64 40" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" d="M14 6h36c6 0 10 5 11 11l2 13c1 5-4 9-8 5l-7-7H16l-7 7c-4 4-9 0-8-5l2-13C4 11 8 6 14 6Z"/><path stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M17 14v10M12 19h10"/><circle cx="44" cy="15" r="2.4" fill="currentColor"/><circle cx="50" cy="21" r="2.4" fill="currentColor"/></svg>
+      <span class="hobby-arrow" aria-hidden="true">↗</span>
+    </a>
+    <!-- Music: ドラムの写真 -->
+    <div class="hobby-card hobby-music">
+      <span class="hobby-title">Music</span>
+      <img src="{{ '/images/Profile/Dram.jpg' | relative_url }}" alt="ドラムを演奏している写真" width="1568" height="1042">
+    </div>
+  </div>
 </section>
