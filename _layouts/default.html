@@ -52,7 +52,6 @@
       <a href="{{ '/works/' | relative_url }}"{% if page.url == '/works/' %} class="active" aria-current="page"{% endif %}>Works</a>
       <a href="{{ '/profile/' | relative_url }}"{% if page.url == '/profile/' %} class="active" aria-current="page"{% endif %}>Profile</a>
       <a href="{{ '/docs/' | relative_url }}"{% if page.url == '/docs/' %} class="active" aria-current="page"{% endif %}>Documents</a>
-      <a href="{{ '/engine/' | relative_url }}"{% if page.url == '/engine/' %} class="active" aria-current="page"{% endif %}>Engine</a>
     </nav>
   </header>
 
@@ -60,6 +59,11 @@
   <main class="board">
 {{ content }}
   </main>
+
+  <!-- 画面左下に固定した Home ボタン（ホーム以外のページで表示） -->
+  {%- unless page.url == '/' %}
+  <a class="home-fab" href="{{ '/' | relative_url }}">Home</a>
+  {%- endunless %}
 
   <!-- 全ページ共通のフッター -->
   <footer class="site-footer">

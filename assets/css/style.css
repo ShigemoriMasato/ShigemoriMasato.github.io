@@ -154,15 +154,24 @@ button { font-family: inherit; }
 .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 a:focus-visible, button:focus-visible, .work-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-/* ---------- Engine ---------- */
-.engine-card { display: grid; grid-template-columns: 1.1fr .9fr; border-radius: 16px; overflow: hidden; background: var(--card); border: 1px solid var(--line); }
-.engine-visual { position: relative; min-height: 340px; background: #000; }
-#engine-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.engine-count { position: absolute; left: 22px; letter-spacing: .14em; pointer-events: none; }
-.engine-count { bottom: 16px; color: #fff; font-family: var(--font-slot5); font-size: 14px; }
-.engine-copy { padding: 44px 40px; align-self: center; }
-.engine-copy h3 { margin-bottom: 14px; font-size: 25px; line-height: 1.5; letter-spacing: -.03em; }
-.engine-copy > p:not(.eyebrow) { margin-bottom: 26px; color: var(--text); font-size: 13.5px; line-height: 2; }
+/* ---------- 説明資料: カード（全体がスライドへのリンク） ---------- */
+.doc-list { display: grid; gap: 24px; }
+.doc-card {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  transition: transform .22s ease, box-shadow .22s ease, background .22s;
+}
+.doc-card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, .95); box-shadow: 0 18px 40px rgba(10, 14, 30, .16); }
+.doc-visual { display: block; aspect-ratio: 16 / 9; background: #000; }
+.doc-visual img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.doc-body { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 32px 36px; }
+.doc-title { font-family: var(--font-slot1); font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; white-space: nowrap; }
+.doc-arrow { font-size: 22px; transition: transform .22s; }
+.doc-card:hover .doc-arrow { transform: translate(3px, -3px); }
 
 /* ---------- Works ---------- */
 .works-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; }
@@ -259,7 +268,6 @@ a:focus-visible, button:focus-visible, .work-card:focus-visible { outline: 2px s
 }
 .work-card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, .95); box-shadow: 0 18px 40px rgba(10, 14, 30, .16); }
 .work-image { position: relative; aspect-ratio: 16 / 10; background: #1a1f29 center / cover no-repeat; }
-.work-badge { position: absolute; left: 10px; top: 10px; padding: 3px 10px; border-radius: 999px; background: rgba(0, 0, 0, .7); color: #fff; font-size: 10px; font-weight: 700; }
 .work-body { padding: 14px 16px 16px; }
 .work-meta { display: flex; justify-content: space-between; font: 10px var(--font-slot3); letter-spacing: .1em; color: var(--accent-text); }
 .work-meta span + span { color: var(--muted); }
@@ -335,12 +343,33 @@ a:focus-visible, button:focus-visible, .work-card:focus-visible { outline: 2px s
 .tile-bg { position: absolute; inset: 0; z-index: -2; background: center / cover no-repeat; transition: transform .5s ease; }
 .tile:hover .tile-bg { transform: scale(1.05); }
 .tile::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(5, 7, 12, .85), rgba(5, 7, 12, .1) 60%); }
+.tile-docs .tile-bg { background-size: 150%; background-position: right top; } /* 画像内の文字とラベルが重ならないよう右上を表示 */
 .tile-profile .tile-bg { background: radial-gradient(circle at 80% 20%, #3d5afe 0, transparent 55%), radial-gradient(circle at 10% 90%, #00b8d9 0, transparent 50%), #0b0d12; }
-.tile-docs .tile-bg canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .tile-label { display: block; font-size: clamp(20px, 2.6vw, 30px); font-weight: 400; letter-spacing: .02em; line-height: 1.3; }
 .tile-works .tile-label { font-size: clamp(26px, 3.4vw, 40px); }
 .tile-arrow { position: absolute; right: 24px; bottom: 26px; font-size: 22px; transition: transform .22s; }
 .tile:hover .tile-arrow { transform: translateX(5px); }
+
+/* ---------- 画面左下の Home ボタン ---------- */
+.home-fab {
+  position: fixed;
+  left: 20px; bottom: 20px;
+  z-index: 35;
+  display: grid;
+  place-items: center;
+  min-width: 88px;
+  height: 44px;
+  padding: 0 18px;
+  border: 1.5px solid #12151b;
+  border-radius: 0;
+  background: #fff;
+  color: #12151b;
+  font: 14px var(--font-slot4);
+  letter-spacing: .12em;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
+  transition: background .18s, color .18s, transform .18s;
+}
+.home-fab:hover { background: #12151b; color: #fff; border-color: #fff; transform: translateY(-2px); }
 
 /* ---------- 共通フッター ---------- */
 .site-footer { margin-top: auto; position: relative; z-index: 1; background: #000; color: #fff; border-top: 1px solid rgba(255, 255, 255, .08); }
@@ -473,9 +502,8 @@ body.dialog-open { overflow: hidden; }
 
 /* ---------- レスポンシブ ---------- */
 @media (max-width: 860px) {
-  .engine-card { grid-template-columns: 1fr; }
-  .engine-visual { min-height: 260px; }
-  .engine-copy { padding: 30px 26px; }
+  .doc-card { grid-template-columns: 1fr; }
+  .doc-body { padding: 22px 24px; }
   .work-grid { grid-template-columns: repeat(2, 1fr); }
   .tiles { grid-template-columns: 1fr 1fr; grid-template-rows: 260px 200px; min-height: 0; }
   .tile-works { grid-row: auto; grid-column: 1 / 3; }
